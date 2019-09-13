@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="COLASModel.ColaVentanilla" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="COLASModel.Rol" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="COLASModel.Servicio" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="COLASModel.Usuario" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="COLASModel.UsuarioRol" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="COLASModel.Ventanilla" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="COLASModel.FK__Servicio__Bloque__4316F928" ManuallyRouted="false" />
@@ -20,8 +19,9 @@
         <AssociationConnector Association="COLASModel.FK__ColaVenta__Venta__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="COLASModel.FK__UsuarioRo__RolId__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="COLASModel.FK__Ventanill__Servi__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="COLASModel.FK__UsuarioRo__Usuar__3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="COLASModel.FK__Ventanill__Usuar__46E78A0C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="COLASModel.Usuario" Width="1.5" PointX="0.75" PointY="8" />
+        <AssociationConnector Association="COLASModel.FK__UsuarioRo__Usuar__3C69FB99" />
+        <AssociationConnector Association="COLASModel.FK__Ventanill__Usuar__46E78A0C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
