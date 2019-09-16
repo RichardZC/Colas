@@ -16,16 +16,18 @@ namespace Hra.Colas.Web.Controllers
         }
         public ActionResult Mantener(int id=0)
         {
-           if (id==0)
+            ViewBag.cboRol = new SelectList(RolBL.Listar(null, x => x.OrderByDescending(y => y.Id)), "Id", "Denominacion");
+
+            if (id == 0)
                 return View(new Datos.Usuario() { Activo = true, IndCambio = false });
-            else            
+            else
                 return View(UsuarioBL.Obtener(id));
         }
         [HttpPost]
         public ActionResult Guardar(Datos.Usuario usuario,string activo)
         {
             var rm = new Comun.ResponseModel();
-            usuario.Activo = activo == "ON" ? true : false;
+            usuario.Activo = string.IsNullOrEmpty(activo) ? false : true;
             try
             {
                 if (usuario.Id == 0)
@@ -37,7 +39,7 @@ namespace Hra.Colas.Web.Controllers
                 }
                 else
                 {
-                    UsuarioBL.ActualizarParcial(usuario, x => x.NombreCompleto, x => x.Correo, x => x.Celular, x => x.Activo);
+                    UsuarioBL.ActualizarParcial(usuario, x => x.NombreCompleto, x => x.Correo, x => x.Celular, x => x.Activo, x => x.RolId);
                 }
                 rm.SetResponse(true);
                 rm.href = Url.Action("Index", "Usuario");

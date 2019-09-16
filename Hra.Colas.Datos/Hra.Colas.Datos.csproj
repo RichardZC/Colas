@@ -84,9 +84,6 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioRol.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Ventanilla.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

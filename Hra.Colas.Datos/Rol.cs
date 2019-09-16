@@ -17,13 +17,14 @@ namespace Hra.Colas.Datos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rol()
         {
-            this.UsuarioRol = new HashSet<UsuarioRol>();
+            this.Usuario = new HashSet<Usuario>();
         }
     
         public int Id { get; set; }
         public string Denominacion { get; set; }
+        public string Codigo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
+        public virtual ICollection<Usuario> Usuario { get; set; }
     }
 }

@@ -30,8 +30,7 @@ namespace Hra.Colas.Datos
         public virtual DbSet<ColaVentanilla> ColaVentanilla { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Servicio> Servicio { get; set; }
-        public virtual DbSet<UsuarioRol> UsuarioRol { get; set; }
-        public virtual DbSet<Ventanilla> Ventanilla { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Ventanilla> Ventanilla { get; set; }
     }
 }

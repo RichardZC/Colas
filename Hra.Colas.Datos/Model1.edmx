@@ -36,6 +36,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Denominacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Codigo" Type="char" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Servicio">
           <Key>
@@ -57,13 +58,6 @@
           <Property Name="Activo" Type="bit" Nullable="false" />
           <Property Name="Celular" Type="varchar" MaxLength="20" />
           <Property Name="IndCambio" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UsuarioRol">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UsuarioId" Type="int" Nullable="false" />
           <Property Name="RolId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Ventanilla">
@@ -124,30 +118,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsuarioRo__RolId__3D5E1FD2">
-          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
-          <End Role="UsuarioRol" Type="Self.UsuarioRol" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rol">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsuarioRol">
-              <PropertyRef Name="RolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsuarioRo__Usuar__3C69FB99">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="UsuarioRol" Type="Self.UsuarioRol" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsuarioRol">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Ventanill__Bloqu__45F365D3">
           <End Role="Bloque" Type="Self.Bloque" Multiplicity="1" />
           <End Role="Ventanilla" Type="Self.Ventanilla" Multiplicity="*" />
@@ -184,6 +154,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="COLASModelStoreContainer">
           <EntitySet Name="Bloque" EntityType="Self.Bloque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cola" EntityType="Self.Cola" Schema="dbo" store:Type="Tables" />
@@ -191,7 +173,6 @@
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsuarioRol" EntityType="Self.UsuarioRol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventanilla" EntityType="Self.Ventanilla" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Cola__ServicioId__4AB81AF0" Association="Self.FK__Cola__ServicioId__4AB81AF0">
             <End Role="Servicio" EntitySet="Servicio" />
@@ -209,14 +190,6 @@
             <End Role="Bloque" EntitySet="Bloque" />
             <End Role="Servicio" EntitySet="Servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsuarioRo__RolId__3D5E1FD2" Association="Self.FK__UsuarioRo__RolId__3D5E1FD2">
-            <End Role="Rol" EntitySet="Rol" />
-            <End Role="UsuarioRol" EntitySet="UsuarioRol" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsuarioRo__Usuar__3C69FB99" Association="Self.FK__UsuarioRo__Usuar__3C69FB99">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="UsuarioRol" EntitySet="UsuarioRol" />
-          </AssociationSet>
           <AssociationSet Name="FK__Ventanill__Bloqu__45F365D3" Association="Self.FK__Ventanill__Bloqu__45F365D3">
             <End Role="Bloque" EntitySet="Bloque" />
             <End Role="Ventanilla" EntitySet="Ventanilla" />
@@ -229,19 +202,64 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Ventanilla" EntitySet="Ventanilla" />
           </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="COLASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="COLASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bloque" EntityType="COLASModel.Bloque" />
+          <EntitySet Name="Cola" EntityType="COLASModel.Cola" />
+          <EntitySet Name="ColaVentanilla" EntityType="COLASModel.ColaVentanilla" />
+          <EntitySet Name="Rol" EntityType="COLASModel.Rol" />
+          <EntitySet Name="Servicio" EntityType="COLASModel.Servicio" />
+          <EntitySet Name="Usuario" EntityType="COLASModel.Usuario" />
+          <EntitySet Name="Ventanilla" EntityType="COLASModel.Ventanilla" />
+          <AssociationSet Name="FK__Servicio__Bloque__4316F928" Association="COLASModel.FK__Servicio__Bloque__4316F928">
+            <End Role="Bloque" EntitySet="Bloque" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ventanill__Bloqu__45F365D3" Association="COLASModel.FK__Ventanill__Bloqu__45F365D3">
+            <End Role="Bloque" EntitySet="Bloque" />
+            <End Role="Ventanilla" EntitySet="Ventanilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cola__ServicioId__4AB81AF0" Association="COLASModel.FK__Cola__ServicioId__4AB81AF0">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="Cola" EntitySet="Cola" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ColaVenta__ColaI__4D94879B" Association="COLASModel.FK__ColaVenta__ColaI__4D94879B">
+            <End Role="Cola" EntitySet="Cola" />
+            <End Role="ColaVentanilla" EntitySet="ColaVentanilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ColaVenta__Venta__4E88ABD4" Association="COLASModel.FK__ColaVenta__Venta__4E88ABD4">
+            <End Role="Ventanilla" EntitySet="Ventanilla" />
+            <End Role="ColaVentanilla" EntitySet="ColaVentanilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="COLASModel.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ventanill__Servi__47DBAE45" Association="COLASModel.FK__Ventanill__Servi__47DBAE45">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="Ventanilla" EntitySet="Ventanilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ventanill__Usuar__46E78A0C" Association="COLASModel.FK__Ventanill__Usuar__46E78A0C">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Ventanilla" EntitySet="Ventanilla" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Bloque">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Denominacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Servicio" Relationship="Self.FK__Servicio__Bloque__4316F928" FromRole="Bloque" ToRole="Servicio" />
-          <NavigationProperty Name="Ventanilla" Relationship="Self.FK__Ventanill__Bloqu__45F365D3" FromRole="Bloque" ToRole="Ventanilla" />
+          <Property Name="Denominacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Servicio" Relationship="COLASModel.FK__Servicio__Bloque__4316F928" FromRole="Bloque" ToRole="Servicio" />
+          <NavigationProperty Name="Ventanilla" Relationship="COLASModel.FK__Ventanill__Bloqu__45F365D3" FromRole="Bloque" ToRole="Ventanilla" />
         </EntityType>
         <EntityType Name="Cola">
           <Key>
@@ -249,10 +267,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ServicioId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Servicio" Relationship="Self.FK__Cola__ServicioId__4AB81AF0" FromRole="Cola" ToRole="Servicio" />
-          <NavigationProperty Name="ColaVentanilla" Relationship="Self.FK__ColaVenta__ColaI__4D94879B" FromRole="Cola" ToRole="ColaVentanilla" />
+          <NavigationProperty Name="Servicio" Relationship="COLASModel.FK__Cola__ServicioId__4AB81AF0" FromRole="Cola" ToRole="Servicio" />
+          <NavigationProperty Name="ColaVentanilla" Relationship="COLASModel.FK__ColaVenta__ColaI__4D94879B" FromRole="Cola" ToRole="ColaVentanilla" />
         </EntityType>
         <EntityType Name="ColaVentanilla">
           <Key>
@@ -262,183 +280,30 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ColaId" Type="Int32" Nullable="false" />
           <Property Name="VentanillaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cola" Relationship="Self.FK__ColaVenta__ColaI__4D94879B" FromRole="ColaVentanilla" ToRole="Cola" />
-          <NavigationProperty Name="Ventanilla" Relationship="Self.FK__ColaVenta__Venta__4E88ABD4" FromRole="ColaVentanilla" ToRole="Ventanilla" />
+          <NavigationProperty Name="Cola" Relationship="COLASModel.FK__ColaVenta__ColaI__4D94879B" FromRole="ColaVentanilla" ToRole="Cola" />
+          <NavigationProperty Name="Ventanilla" Relationship="COLASModel.FK__ColaVenta__Venta__4E88ABD4" FromRole="ColaVentanilla" ToRole="Ventanilla" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Denominacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="UsuarioRol" Relationship="Self.FK__UsuarioRo__RolId__3D5E1FD2" FromRole="Rol" ToRole="UsuarioRol" />
+          <Property Name="Denominacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="COLASModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Servicio">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Denominacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Denominacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="BloqueId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Bloque" Relationship="Self.FK__Servicio__Bloque__4316F928" FromRole="Servicio" ToRole="Bloque" />
-          <NavigationProperty Name="Cola" Relationship="Self.FK__Cola__ServicioId__4AB81AF0" FromRole="Servicio" ToRole="Cola" />
-          <NavigationProperty Name="Ventanilla" Relationship="Self.FK__Ventanill__Servi__47DBAE45" FromRole="Servicio" ToRole="Ventanilla" />
+          <NavigationProperty Name="Bloque" Relationship="COLASModel.FK__Servicio__Bloque__4316F928" FromRole="Servicio" ToRole="Bloque" />
+          <NavigationProperty Name="Cola" Relationship="COLASModel.FK__Cola__ServicioId__4AB81AF0" FromRole="Servicio" ToRole="Cola" />
+          <NavigationProperty Name="Ventanilla" Relationship="COLASModel.FK__Ventanill__Servi__47DBAE45" FromRole="Servicio" ToRole="Ventanilla" />
         </EntityType>
-        <EntityType Name="UsuarioRol">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <Property Name="RolId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Rol" Relationship="Self.FK__UsuarioRo__RolId__3D5E1FD2" FromRole="UsuarioRol" ToRole="Rol" />
-          <NavigationProperty Name="Usuario" Relationship="COLASModel.FK__UsuarioRo__Usuar__3C69FB99" FromRole="UsuarioRol" ToRole="Usuario" />
-        </EntityType>
-        <EntityType Name="Ventanilla">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Denominacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="BloqueId" Type="Int32" Nullable="false" />
-          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <Property Name="ServicioId" Type="Int32" />
-          <NavigationProperty Name="Bloque" Relationship="Self.FK__Ventanill__Bloqu__45F365D3" FromRole="Ventanilla" ToRole="Bloque" />
-          <NavigationProperty Name="ColaVentanilla" Relationship="Self.FK__ColaVenta__Venta__4E88ABD4" FromRole="Ventanilla" ToRole="ColaVentanilla" />
-          <NavigationProperty Name="Servicio" Relationship="Self.FK__Ventanill__Servi__47DBAE45" FromRole="Ventanilla" ToRole="Servicio" />
-          <NavigationProperty Name="Usuario" Relationship="COLASModel.FK__Ventanill__Usuar__46E78A0C" FromRole="Ventanilla" ToRole="Usuario" />
-        </EntityType>
-        <Association Name="FK__Servicio__Bloque__4316F928">
-          <End Role="Bloque" Type="Self.Bloque" Multiplicity="1" />
-          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bloque">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Servicio">
-              <PropertyRef Name="BloqueId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ventanill__Bloqu__45F365D3">
-          <End Role="Bloque" Type="Self.Bloque" Multiplicity="1" />
-          <End Role="Ventanilla" Type="Self.Ventanilla" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bloque">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ventanilla">
-              <PropertyRef Name="BloqueId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Cola__ServicioId__4AB81AF0">
-          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
-          <End Role="Cola" Type="Self.Cola" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Servicio">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Cola">
-              <PropertyRef Name="ServicioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ColaVenta__ColaI__4D94879B">
-          <End Role="Cola" Type="Self.Cola" Multiplicity="1" />
-          <End Role="ColaVentanilla" Type="Self.ColaVentanilla" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cola">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ColaVentanilla">
-              <PropertyRef Name="ColaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ColaVenta__Venta__4E88ABD4">
-          <End Role="Ventanilla" Type="Self.Ventanilla" Multiplicity="1" />
-          <End Role="ColaVentanilla" Type="Self.ColaVentanilla" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ventanilla">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ColaVentanilla">
-              <PropertyRef Name="VentanillaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsuarioRo__RolId__3D5E1FD2">
-          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
-          <End Role="UsuarioRol" Type="Self.UsuarioRol" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rol">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsuarioRol">
-              <PropertyRef Name="RolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ventanill__Servi__47DBAE45">
-          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
-          <End Role="Ventanilla" Type="Self.Ventanilla" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Servicio">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ventanilla">
-              <PropertyRef Name="ServicioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="COLASEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Bloque" EntityType="Self.Bloque" />
-          <EntitySet Name="Cola" EntityType="Self.Cola" />
-          <EntitySet Name="ColaVentanilla" EntityType="Self.ColaVentanilla" />
-          <EntitySet Name="Rol" EntityType="Self.Rol" />
-          <EntitySet Name="Servicio" EntityType="Self.Servicio" />
-          <EntitySet Name="UsuarioRol" EntityType="Self.UsuarioRol" />
-          <EntitySet Name="Ventanilla" EntityType="Self.Ventanilla" />
-          <AssociationSet Name="FK__Servicio__Bloque__4316F928" Association="Self.FK__Servicio__Bloque__4316F928">
-            <End Role="Bloque" EntitySet="Bloque" />
-            <End Role="Servicio" EntitySet="Servicio" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ventanill__Bloqu__45F365D3" Association="Self.FK__Ventanill__Bloqu__45F365D3">
-            <End Role="Bloque" EntitySet="Bloque" />
-            <End Role="Ventanilla" EntitySet="Ventanilla" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cola__ServicioId__4AB81AF0" Association="Self.FK__Cola__ServicioId__4AB81AF0">
-            <End Role="Servicio" EntitySet="Servicio" />
-            <End Role="Cola" EntitySet="Cola" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ColaVenta__ColaI__4D94879B" Association="Self.FK__ColaVenta__ColaI__4D94879B">
-            <End Role="Cola" EntitySet="Cola" />
-            <End Role="ColaVentanilla" EntitySet="ColaVentanilla" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ColaVenta__Venta__4E88ABD4" Association="Self.FK__ColaVenta__Venta__4E88ABD4">
-            <End Role="Ventanilla" EntitySet="Ventanilla" />
-            <End Role="ColaVentanilla" EntitySet="ColaVentanilla" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsuarioRo__RolId__3D5E1FD2" Association="Self.FK__UsuarioRo__RolId__3D5E1FD2">
-            <End Role="Rol" EntitySet="Rol" />
-            <End Role="UsuarioRol" EntitySet="UsuarioRol" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ventanill__Servi__47DBAE45" Association="Self.FK__Ventanill__Servi__47DBAE45">
-            <End Role="Servicio" EntitySet="Servicio" />
-            <End Role="Ventanilla" EntitySet="Ventanilla" />
-          </AssociationSet>
-          <EntitySet Name="Usuario" EntityType="COLASModel.Usuario" />
-          <AssociationSet Name="FK__UsuarioRo__Usuar__3C69FB99" Association="COLASModel.FK__UsuarioRo__Usuar__3C69FB99">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="UsuarioRol" EntitySet="UsuarioRol" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ventanill__Usuar__46E78A0C" Association="COLASModel.FK__Ventanill__Usuar__46E78A0C">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Ventanilla" EntitySet="Ventanilla" />
-          </AssociationSet>
-          </EntityContainer>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="Id" />
@@ -450,18 +315,105 @@
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="IndCambio" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="UsuarioRol" Relationship="COLASModel.FK__UsuarioRo__Usuar__3C69FB99" FromRole="Usuario" ToRole="UsuarioRol" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rol" Relationship="COLASModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
           <NavigationProperty Name="Ventanilla" Relationship="COLASModel.FK__Ventanill__Usuar__46E78A0C" FromRole="Usuario" ToRole="Ventanilla" />
         </EntityType>
-        <Association Name="FK__UsuarioRo__Usuar__3C69FB99">
-          <End Type="COLASModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="COLASModel.UsuarioRol" Role="UsuarioRol" Multiplicity="*" />
+        <EntityType Name="Ventanilla">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denominacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BloqueId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="ServicioId" Type="Int32" />
+          <NavigationProperty Name="Bloque" Relationship="COLASModel.FK__Ventanill__Bloqu__45F365D3" FromRole="Ventanilla" ToRole="Bloque" />
+          <NavigationProperty Name="ColaVentanilla" Relationship="COLASModel.FK__ColaVenta__Venta__4E88ABD4" FromRole="Ventanilla" ToRole="ColaVentanilla" />
+          <NavigationProperty Name="Servicio" Relationship="COLASModel.FK__Ventanill__Servi__47DBAE45" FromRole="Ventanilla" ToRole="Servicio" />
+          <NavigationProperty Name="Usuario" Relationship="COLASModel.FK__Ventanill__Usuar__46E78A0C" FromRole="Ventanilla" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK__Servicio__Bloque__4316F928">
+          <End Type="COLASModel.Bloque" Role="Bloque" Multiplicity="1" />
+          <End Type="COLASModel.Servicio" Role="Servicio" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Usuario">
+            <Principal Role="Bloque">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UsuarioRol">
-              <PropertyRef Name="UsuarioId" />
+            <Dependent Role="Servicio">
+              <PropertyRef Name="BloqueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ventanill__Bloqu__45F365D3">
+          <End Type="COLASModel.Bloque" Role="Bloque" Multiplicity="1" />
+          <End Type="COLASModel.Ventanilla" Role="Ventanilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloque">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ventanilla">
+              <PropertyRef Name="BloqueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cola__ServicioId__4AB81AF0">
+          <End Type="COLASModel.Servicio" Role="Servicio" Multiplicity="1" />
+          <End Type="COLASModel.Cola" Role="Cola" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cola">
+              <PropertyRef Name="ServicioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ColaVenta__ColaI__4D94879B">
+          <End Type="COLASModel.Cola" Role="Cola" Multiplicity="1" />
+          <End Type="COLASModel.ColaVentanilla" Role="ColaVentanilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cola">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ColaVentanilla">
+              <PropertyRef Name="ColaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ColaVenta__Venta__4E88ABD4">
+          <End Type="COLASModel.Ventanilla" Role="Ventanilla" Multiplicity="1" />
+          <End Type="COLASModel.ColaVentanilla" Role="ColaVentanilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ventanilla">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ColaVentanilla">
+              <PropertyRef Name="VentanillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Type="COLASModel.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="COLASModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ventanill__Servi__47DBAE45">
+          <End Type="COLASModel.Servicio" Role="Servicio" Multiplicity="0..1" />
+          <End Type="COLASModel.Ventanilla" Role="Ventanilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ventanilla">
+              <PropertyRef Name="ServicioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -477,7 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -486,78 +438,71 @@
           <EntitySetMapping Name="Bloque">
             <EntityTypeMapping TypeName="COLASModel.Bloque">
               <MappingFragment StoreEntitySet="Bloque">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Denominacion" ColumnName="Denominacion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cola">
             <EntityTypeMapping TypeName="COLASModel.Cola">
               <MappingFragment StoreEntitySet="Cola">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ColaVentanilla">
             <EntityTypeMapping TypeName="COLASModel.ColaVentanilla">
               <MappingFragment StoreEntitySet="ColaVentanilla">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="ColaId" ColumnName="ColaId" />
                 <ScalarProperty Name="VentanillaId" ColumnName="VentanillaId" />
+                <ScalarProperty Name="ColaId" ColumnName="ColaId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rol">
             <EntityTypeMapping TypeName="COLASModel.Rol">
               <MappingFragment StoreEntitySet="Rol">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Denominacion" ColumnName="Denominacion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Servicio">
             <EntityTypeMapping TypeName="COLASModel.Servicio">
               <MappingFragment StoreEntitySet="Servicio">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Denominacion" ColumnName="Denominacion" />
+                <ScalarProperty Name="BloqueId" ColumnName="BloqueId" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="BloqueId" ColumnName="BloqueId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsuarioRol">
-            <EntityTypeMapping TypeName="COLASModel.UsuarioRol">
-              <MappingFragment StoreEntitySet="UsuarioRol">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ventanilla">
-            <EntityTypeMapping TypeName="COLASModel.Ventanilla">
-              <MappingFragment StoreEntitySet="Ventanilla">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Denominacion" ColumnName="Denominacion" />
-                <ScalarProperty Name="BloqueId" ColumnName="BloqueId" />
-                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-                <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="COLASModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
                 <ScalarProperty Name="IndCambio" ColumnName="IndCambio" />
                 <ScalarProperty Name="Celular" ColumnName="Celular" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventanilla">
+            <EntityTypeMapping TypeName="COLASModel.Ventanilla">
+              <MappingFragment StoreEntitySet="Ventanilla">
+                <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="BloqueId" ColumnName="BloqueId" />
+                <ScalarProperty Name="Denominacion" ColumnName="Denominacion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

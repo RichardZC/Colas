@@ -17,7 +17,6 @@ namespace Hra.Colas.Datos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
-            this.UsuarioRol = new HashSet<UsuarioRol>();
             this.Ventanilla = new HashSet<Ventanilla>();
         }
     
@@ -28,9 +27,9 @@ namespace Hra.Colas.Datos
         public bool Activo { get; set; }
         public string Celular { get; set; }
         public bool IndCambio { get; set; }
+        public int RolId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
+        public virtual Rol Rol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ventanilla> Ventanilla { get; set; }
     }
