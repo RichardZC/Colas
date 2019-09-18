@@ -22,7 +22,7 @@ namespace Hra.Colas.Web.Controllers
             //password = Comun.HashHelper.MD5(password);
            // u.Clave = u.Clave.ToLower();
 
-            var usuario= UsuarioBL.Obtener(x => x.Correo == u.Usuario && x.Clave == u.Clave && x.Activo);
+            var usuario= UsuarioBL.Obtener(x => x.Correo == u.Usuario && x.Clave == u.Clave && x.Activo,includeProperties:"Rol");
             if (usuario != null)
             {
                 if (!usuario.IndCambio)
@@ -33,6 +33,9 @@ namespace Hra.Colas.Web.Controllers
                 else
                 {
                     AddSesion(usuario.Id, ref rm);
+                    Session["UsuarioId"] = usuario.Id;
+                    Session["UsuarioRol"] = usuario.NombreCompleto + " - " + usuario.Rol.Denominacion;
+                    Session["mnu"] = Constante.Menu.Listar(usuario.Rol.Codigo);
                     rm.SetResponse(true);
                     rm.href = Url.Action("Index", "Home");
                 }

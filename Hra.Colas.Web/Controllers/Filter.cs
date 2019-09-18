@@ -17,7 +17,7 @@ namespace Hra.Colas.Web.Controllers
         {
             base.OnActionExecuting(filterContext);
 
-            if (!SessionHelper.ExistUserInSession())
+            if (!SessionHelper.ExistUserInSession() )
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {
@@ -26,22 +26,23 @@ namespace Hra.Colas.Web.Controllers
                 }));
                 return;
             }
-            //var permiso = HttpContext.Current.Session["menu"] as List<Modelo.Menu>;
-            //if (permiso == null)
-            //{
-            //    SessionHelper.DestroyUserSession();
-            //    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
-            //    {
-            //        controller = "Home",
-            //        action = "Login"
-            //    }));
-            //    return;
-            //}
+
+            var permiso = HttpContext.Current.Session["UsuarioId"] ;
+            if (permiso == null)
+            {
+                SessionHelper.DestroyUserSession();
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
+                {
+                    controller = "Home",
+                    action = "Login"
+                }));
+                return;
+            }
 
             //string controlador = filterContext.RouteData.Values["Controller"].ToString();
             //if (controlador.ToLower() == "home") return;
 
-            
+
             //if (!permiso.Any(x => x.Modulo == controlador))
             //{
             //    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Hra.Colas.Web.Controllers
 {
+    [Autenticado]
     public class UsuarioController : Controller
     {
         // GET: Usuario

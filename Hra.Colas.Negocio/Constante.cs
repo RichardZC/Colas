@@ -10,20 +10,26 @@ namespace Hra.Colas.Negocio
     {
         public static class Rol
         {
+            // sincronizado con la base de datos
             public const string Administrador = "SA";
             public const string Admision = "AD";
-            public const string Medico = "MD";
-            
-            public static string Obtener(string codigo)
+            public const string Medico = "ME";
+        }
+        public static class Menu {
+            public static List<string> Listar(string rol)
             {
-                switch (codigo)
+                var mnuAdministrador = new List<string> { "Usuario", "Bloque", "Servicio", "Ventanilla" };
+                var mnuMedico = new List<string> { "Llamado" };
+                var mnuAdmision = new List<string> { "Admision"};
+                switch (rol)
                 {
-                    case Administrador: return "Pendiente";
-                    case Admision: return "Terminado";
-                    case Medico: return "Anulado";
-                    default: return string.Empty;
+                    case Rol.Administrador: return mnuAdministrador;
+                    case Rol.Admision: return mnuAdmision;
+                    case Rol.Medico: return mnuMedico;
+                    default: return null;
                 }
             }
         }
+        
     }
 }

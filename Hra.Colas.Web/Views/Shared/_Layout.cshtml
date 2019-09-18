@@ -1,6 +1,8 @@
 ﻿@{
     string empresa = Hra.Colas.Web.Controllers.ComunController.ObtenerEmpresa();
+    List<string> menu = Session["mnu"] as List<string>;
 }
+
 <!DOCTYPE html>
 <html class="loading" lang="es-pe" data-textdirection="ltr">
 <head>
@@ -26,6 +28,9 @@
         <div class="navbar navbar-fixed">
             <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
                 <div class="nav-wrapper">
+                    <div class="header-search-wrapper hide-on-small-and-down" style="margin-top:0">
+                        <p style="margin:0">Bienvenido: @Session["UsuarioRol"]</p>
+                    </div>
                     <ul class="navbar-list right">
                         <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
                         <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="~/app-assets/images/avatar/avatar-7.png" alt="avatar"><i></i></span></a></li>
@@ -35,7 +40,7 @@
                         <li><a class="grey-text text-darken-1" href="user-profile-page.html"><i class="material-icons">person_outline</i> Perfil</a></li>
                         <li><a class="grey-text text-darken-1" href="page-faq.html"><i class="material-icons">help_outline</i> Ayuda</a></li>
                         <li class="divider"></li>
-                        <li><a class="grey-text text-darken-1" href="@Url.Action("Logout","Login")"><i class="material-icons">keyboard_tab</i> Cerrar Sesión</a></li>
+                        <li><a class="grey-text text-darken-1" href="@Url.Action("Logout", "Login")"><i class="material-icons">keyboard_tab</i> Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </nav>
@@ -44,40 +49,19 @@
 
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
         <div class="brand-sidebar">
-            <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="@Url.Action("Index","Home")"><img src="~/app-assets/images/logo/materialize-logo-color.png" alt="materialize logo" /><span class="logo-text hide-on-med-and-down">Materialize</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
+            <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="@Url.Action("Index", "Home")"><img src="~/app-assets/images/logo/materialize-logo-color.png" alt="materialize logo" /><span class="logo-text hide-on-med-and-down">Materialize</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
         </div>
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="form-layouts.html"><i class="material-icons">image_aspect_ratio</i><span class="menu-title" data-i18n="">Inicio</span></a>
-            </li>
 
-            <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">face</i><span class="menu-title" data-i18n="">Usuarios</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li>
-                            <a class="collapsible-body" href="@Url.Action("Index","Usuario")" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Usuarios</span></a>
-                        </li>
-                        <li>
-                            <a class="collapsible-body" href="user-login.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Roles</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">face</i><span class="menu-title" data-i18n="">Mantenimientos</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li>
-                            <a class="collapsible-body" href="@Url.Action("Index","Marca")" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Marca</span></a>
-                        </li>
-                        <li>
-                            <a class="collapsible-body" href="user-login.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Categorias</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            @foreach (var item in menu)
+            {
+                <li class="bold">
+                    <a class="waves-effect waves-cyan " href="@Url.Action("Index",item)">
+                        <i class="material-icons">image_aspect_ratio</i>
+                        <span class="menu-title" data-i18n="">@item</span>
+                    </a>
+                </li>
+            }      
 
         </ul>
         <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
