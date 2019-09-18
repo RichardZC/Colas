@@ -44,11 +44,15 @@
 
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
         <div class="brand-sidebar">
-            <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="@Url.Action("Index","Home")"><img src="~/app-assets/images/logo/materialize-logo-color.png" alt="materialize logo" /><span class="logo-text hide-on-med-and-down">Materialize</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
+            <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="@Url.Action("Index","Home")"><img src="~/app-assets/images/logo/materialize-logo-color.png" alt="materialize logo" /><span class="logo-text hide-on-med-and-down">HR-Ayacucho</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
         </div>
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="form-layouts.html"><i class="material-icons">image_aspect_ratio</i><span class="menu-title" data-i18n="">Inicio</span></a>
+                <a class="waves-effect waves-cyan " href="@Url.Action("Index","Bloque")"><i class="material-icons">extension</i><span class="menu-title" data-i18n="">Bloques</span></a>
+            </li>
+
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="@Url.Action("Index","Servicio")"><i class="material-icons">contact_phone</i><span class="menu-title" data-i18n="">Servicios</span></a>
             </li>
 
             <li class="bold">
@@ -89,7 +93,7 @@
 
     <footer class="page-footer footer footer-fixed footer-dark gradient-45deg-indigo-purple gradient-shadow navbar-border navbar-shadow">
         <div class="footer-copyright">
-            <div class="container"><span>&copy; 2019 - All rights reserved.</span><span class="right hide-on-small-only"><a href="https://codeaperu.com">@empresa</a></span></div>
+            <div class="container"><span>Todos los Derechos Reservados </span><span class="right hide-on-small-only"><a href="https://codeaperu.com">@empresa</a></span></div>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
