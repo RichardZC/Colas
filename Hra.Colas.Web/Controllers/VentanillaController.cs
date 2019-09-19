@@ -7,12 +7,13 @@ using System.Web.Mvc;
 
 namespace Hra.Colas.Web.Controllers
 {
+    [Autenticado]
     public class VentanillaController : Controller
     {
         // GET: Ventanilla
         public ActionResult Index()
         {
-            return View(VentanillaBL.Listar( includeProperties:"Bloque" ));
+            return View(VentanillaBL.Listar( includeProperties:"Bloque,Usuario,Servicio" ));
             //return View(BloqueBL.Listar());
         }
     }
