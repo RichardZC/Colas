@@ -9,7 +9,8 @@ namespace Hra.Colas.Web.Controllers
     [Autenticado]
     public class AdmisionController : Controller
     {
-        // GET: Admision
+        
+
         public ActionResult Index()
         {
             return View();
