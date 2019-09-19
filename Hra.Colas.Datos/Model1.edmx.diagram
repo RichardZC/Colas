@@ -11,16 +11,16 @@
         <EntityTypeShape EntityType="COLASModel.Rol" Width="1.5" PointX="0.75" PointY="8" />
         <EntityTypeShape EntityType="COLASModel.Servicio" Width="1.5" PointX="3" PointY="2.75" />
         <EntityTypeShape EntityType="COLASModel.Usuario" Width="1.5" PointX="3" PointY="7.5" />
-        <EntityTypeShape EntityType="COLASModel.Ventanilla" Width="1.5" PointX="5.25" PointY="2.625" />
         <AssociationConnector Association="COLASModel.FK__Servicio__Bloque__4316F928" />
-        <AssociationConnector Association="COLASModel.FK__Ventanill__Bloqu__45F365D3" />
         <AssociationConnector Association="COLASModel.FK__Cola__ServicioId__4AB81AF0" />
         <AssociationConnector Association="COLASModel.FK__ColaVenta__ColaI__4D94879B" />
-        <AssociationConnector Association="COLASModel.FK__ColaVenta__Venta__4E88ABD4" />
         <AssociationConnector Association="COLASModel.FK_Usuario_Rol" />
-        <AssociationConnector Association="COLASModel.FK__Ventanill__Servi__47DBAE45" />
-        <AssociationConnector Association="COLASModel.FK__Ventanill__Usuar__46E78A0C" />
-      </Diagram>
+        <EntityTypeShape EntityType="COLASModel.Ventanilla" Width="1.5" PointX="5.25" PointY="2.25" />
+        <AssociationConnector Association="COLASModel.FK__Ventanill__Bloqu__25869641" />
+        <AssociationConnector Association="COLASModel.FK__ColaVenta__Venta__22AA2996" />
+        <AssociationConnector Association="COLASModel.FK__Ventanill__Servi__267ABA7A" />
+        <AssociationConnector Association="COLASModel.FK__Ventanill__Usuar__276EDEB3" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

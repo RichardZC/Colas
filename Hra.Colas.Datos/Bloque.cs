@@ -28,7 +28,5 @@ namespace Hra.Colas.Datos
         public virtual ICollection<Servicio> Servicio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ventanilla> Ventanilla { get; set; }
-        public bool Activo { get; set; }
-        public bool IndCambio { get; set; }
     }
 }

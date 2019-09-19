@@ -19,7 +19,7 @@ namespace Hra.Colas.Web.Controllers
             ViewBag.cboRol = new SelectList(BloqueBL.Listar(null, x => x.OrderByDescending(y => y.Id)), "Id", "Denominacion");
 
             if (id == 0)
-                return View(new Datos.Bloque() { Activo = true, IndCambio = false });
+                return View(new Datos.Bloque() );
             else
                 return View(BloqueBL.Obtener(id));
         }
@@ -27,7 +27,7 @@ namespace Hra.Colas.Web.Controllers
         public ActionResult Guardar(Datos.Bloque bloque, string activo)
         {
             var rm = new Comun.ResponseModel();
-            bloque.Activo = string.IsNullOrEmpty(activo) ? false : true;
+            //bloque.Activo = string.IsNullOrEmpty(activo) ? false : true;
             try
             {
                 if (bloque.Id == 0)

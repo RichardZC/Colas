@@ -23,7 +23,7 @@ namespace Hra.Colas.Datos
         public int Id { get; set; }
         public string Denominacion { get; set; }
         public int BloqueId { get; set; }
-        public int UsuarioId { get; set; }
+        public Nullable<int> UsuarioId { get; set; }
         public Nullable<int> ServicioId { get; set; }
     
         public virtual Bloque Bloque { get; set; }
