@@ -133,6 +133,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ServicioController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\VentanillaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -504,6 +505,7 @@
     <Content Include="Views\Servicio\Mantener.cshtml" />
     <Content Include="Views\Bloque\Index.cshtml" />
     <Content Include="Views\Bloque\Mantener.cshtml" />
+    <Content Include="Views\Ventanilla\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hra.Colas.Comun\Hra.Colas.Comun.csproj">
