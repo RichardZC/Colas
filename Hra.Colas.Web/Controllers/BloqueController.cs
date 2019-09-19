@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Hra.Colas.Web.Controllers
 {
+    [Autenticado]
     public class BloqueController : Controller
     {
         // GET: Bloque
@@ -19,7 +20,7 @@ namespace Hra.Colas.Web.Controllers
             ViewBag.cboRol = new SelectList(BloqueBL.Listar(null, x => x.OrderByDescending(y => y.Id)), "Id", "Denominacion");
 
             if (id == 0)
-                return View(new Datos.Bloque() );
+                return View(new Datos.Bloque());
             else
                 return View(BloqueBL.Obtener(id));
         }

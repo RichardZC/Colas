@@ -27,7 +27,6 @@
                                     <th>Bloque</th>
                                     <th>Usuario</th>
                                     <th>Servicio</th>
-                                    @*<th>Activo</th>*@
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,21 +38,20 @@
                                         </td>
                                         <td>@item.Denominacion</td>
                                         <td>@item.Bloque.Denominacion</td>
-                                        @*<td>@item.Bloque.Denominacion</td>*@
-                                        <td>@item.UsuarioId</td>
-                                        <td>@item.ServicioId</td>
+                                        <td>
+                                            @if (item.Usuario != null)
+                                            {
+                                                @item.Usuario.NombreCompleto
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.Servicio != null)
+                                            {
+                                                @item.Servicio.Denominacion
+                                            }
+                                        </td>
 
-                                        @*<td>@item.Bloque.Denominacion</td>
-                                            <td>
-                                                @if (item.Estado)
-                                                {
-                                                    <a href="#"><i class="material-icons">check_circle</i></a>
-                                                }
-                                                else
-                                                {
-                                                    <a href="#"><i class="material-icons red-text">remove_circle</i></a>
-                                                }
-                                            </td>*@
+                                       
                                     </tr>
                                 }
 
