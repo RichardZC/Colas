@@ -9,6 +9,7 @@ namespace Hra.Colas.Web.Controllers
 {
     public class ComunController : Controller
     {
+
         public static string ObtenerEmpresa()
         {
             return ConfigurationManager.AppSettings["Empresa"];
