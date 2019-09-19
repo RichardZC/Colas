@@ -9,7 +9,7 @@ namespace Hra.Colas.Web.Controllers
 {
     public class VentanillaController : Controller
     {
-        // GET: Ventanilla
+        
         public ActionResult Index()
         {
             return View(VentanillaBL.Listar( includeProperties:"Bloque" ));
