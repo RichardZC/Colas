@@ -14,7 +14,7 @@ namespace Hra.Colas.Web.Controllers
         public ActionResult Index()
         {
             return View(VentanillaBL.Listar( includeProperties:"Bloque,Usuario,Servicio" ));
-            //return View(BloqueBL.Listar());
+       
         }
     }
 }
