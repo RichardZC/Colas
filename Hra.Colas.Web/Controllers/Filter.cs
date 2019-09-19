@@ -33,8 +33,8 @@ namespace Hra.Colas.Web.Controllers
                 SessionHelper.DestroyUserSession();
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {
-                    controller = "Home",
-                    action = "Login"
+                    controller = "Login",
+                    action = "Index"
                 }));
                 return;
             }

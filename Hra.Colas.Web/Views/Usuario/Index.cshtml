@@ -26,30 +26,32 @@
                                     <th>Nombre</th>
                                     <th>Correo</th>
                                     <th>Celular</th>
+                                    <th>Rol</th>
                                     <th>Activo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            <a href="@Url.Action("Mantener","Usuario",new { id = item.Id })"><i class="material-icons">edit</i></a>
-                                        </td>
-                                        <td>@item.NombreCompleto</td>
-                                        <td>@item.Correo  </td>
-                                        <td>@item.Celular</td>
-                                        <td>
-                                            @if (item.Activo)
-                                            {
-                                                <a href="#"><i class="material-icons">check_circle</i></a>
-                                            }
-                                            else
-                                            {
-                                                <a href="#"><i class="material-icons red-text">remove_circle</i></a>
-                                            }
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("Mantener","Usuario",new { id = item.Id })"><i class="material-icons">edit</i></a>
+                                    </td>
+                                    <td>@item.NombreCompleto</td>
+                                    <td>@item.Correo  </td>
+                                    <td>@item.Celular</td>
+                                    <td>@item.Rol.Denominacion</td>
+                                    <td>
+                                        @if (item.Activo)
+                                        {
+                                            <a href="#"><i class="material-icons">check_circle</i></a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#"><i class="material-icons red-text">remove_circle</i></a>
+                                        }
+                                    </td>
+                                </tr>
                                 }
 
                             </tbody>
