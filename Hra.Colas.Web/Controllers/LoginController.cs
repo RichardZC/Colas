@@ -29,6 +29,7 @@ namespace Hra.Colas.Web.Controllers
                 {
                     rm.SetResponse(true);
                     rm.function = "nuevaclave(" + usuario.Id + ",'" + usuario.Correo + "');";
+
                 }
                 else
                 {
