@@ -506,6 +506,7 @@
     <Content Include="Views\Bloque\Index.cshtml" />
     <Content Include="Views\Bloque\Mantener.cshtml" />
     <Content Include="Views\Ventanilla\Index.cshtml" />
+    <Content Include="Views\Ventanilla\Mantener.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hra.Colas.Comun\Hra.Colas.Comun.csproj">
