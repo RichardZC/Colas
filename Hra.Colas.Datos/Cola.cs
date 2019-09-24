@@ -24,6 +24,7 @@ namespace Hra.Colas.Datos
         public System.DateTime Fecha { get; set; }
         public string Codigo { get; set; }
         public int ServicioId { get; set; }
+        public bool IndAtendido { get; set; }
     
         public virtual Servicio Servicio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

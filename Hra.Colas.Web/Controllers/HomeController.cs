@@ -11,9 +11,15 @@ namespace Hra.Colas.Web.Controllers
     {
         public ActionResult Index()
         {
+            var rol = Session["Rol"].ToString();
+            if (rol == Negocio.Constante.Rol.Admision)
+                return RedirectToAction("Index", "Admision");
+            if (rol == Negocio.Constante.Rol.Medico)
+                return RedirectToAction("Index", "Llamado");
+            
             return View();
         }
 
-        
+
     }
 }

@@ -1,97 +1,147 @@
-﻿<div class="row">
-    <div class="col s12">
-        <div class="container">
+﻿@model Hra.Colas.Datos.Ventanilla
 
-            <div id="card-stats">
-                <div class="row">
-                    <div class="col s12 m6 l6 xl3">
-                        <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text animate fadeLeft">
-                            <div class="padding-4">
-                                <div class="col s7 m7">
-                                    <i class="material-icons background-round mt-5">airline_seat_recline_extra</i>
-                                    <p>COLA</p>
+@if (Model == null)
+{
+    <h2>Ventanilla no asignada</h2>
+
+}
+else
+{
+    <div class="row">
+        <div class="col s12">
+            <div class="container">
+                <h4>@Model.Denominacion - @Model.Bloque.Denominacion</h4>
+                <hr />
+                <div id="card-stats">
+                    <div class="row">
+                        <!-- User Profile Feed -->
+                        <div class="col s12 m3 user-section-negative-margin">
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <hr />
+                                    <br>
+                                    <a class="waves-effect waves-light btn mt-5 cyan border-radius-4" v-on:click="Llamar()">
+                                        <i class="material-icons left">airline_seat_recline_extra</i> Llamar Siguiente
+                                    </a>
                                 </div>
-                                <div class="col s5 m5 right-align">
-                                    <h3 class="mb-0 white-text">99</h3>
-                                    <p class="no-margin">En Espera</p>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col s6">
+                                    <h6>Llamado</h6>
+                                    <h5 class="m-0"><a href="#">1</a></h5>
+                                </div>
+                                <div class="col s6">
+                                    <h6>Cola</h6>
+                                    <h5 class="m-0">
+                                    <a href="#" v-if="Cola">{{ Cola.Codigo }}</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row" v-if="Cola">
+                                <div class="col s6">
+                                    <a v-on:click="Atender(false)" class="waves-effect waves-light red  btn-small">Ausente</a>
+                                </div>
+                                <div class="col s6">
+                                    <a v-on:click="Atender(true)" class="waves-effect waves-light green btn-small">Presente</a>
+                                </div>
+                                @*<div class="col s12">
+                                        <p class="m-0"><a href="#">Volver a llamar</a></p>
+                                    </div>*@
+                            </div>
+                            
+
+                        </div>
+                        <div class="col s12 m6 l6 xl3">
+                            <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text animate fadeLeft">
+                                <div class="padding-4">
+                                    <div class="col s7 m7">
+                                        <i class="material-icons background-round mt-5">airline_seat_recline_extra</i>
+                                        <p>COLA</p>
+                                    </div>
+                                    <div class="col s5 m5 right-align">
+                                        <h3 class="mb-0 white-text">{{ NroCola }}</h3>
+                                        <p class="no-margin">En Espera</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l6 xl3">
+                            <div class="card gradient-45deg-red-pink gradient-shadow min-height-100 white-text animate fadeLeft">
+                                <div class="padding-4">
+                                    <div class="col s7 m7">
+                                        <i class="material-icons background-round mt-5">new_releases</i>
+                                        <p>AUSENTES</p>
+                                    </div>
+                                    <div class="col s5 m5 right-align">
+                                        <h3 class="mb-0 white-text">{{ NroAusentes }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l6 xl3">
+                            <div class="card gradient-45deg-green-teal gradient-shadow min-height-100 white-text animate fadeRight">
+                                <div class="padding-4">
+                                    <div class="col s7 m7">
+                                        <i class="material-icons background-round mt-5">person_add</i>
+                                        <p>ATENDIDOS</p>
+                                    </div>
+                                    <div class="col s5 m5 right-align">
+                                        <h3 class="mb-0 white-text">{{ NroAtendidos }}</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m6 l6 xl3">
-                        <div class="card gradient-45deg-red-pink gradient-shadow min-height-100 white-text animate fadeLeft">
-                            <div class="padding-4">
-                                <div class="col s7 m7">
-                                    <i class="material-icons background-round mt-5">new_releases</i>
-                                    <p>AUSENTES</p>
-                                </div>
-                                <div class="col s5 m5 right-align">
-                                    <h3 class="mb-0 white-text">99</h3>
-                                    <p class="no-margin">Ventanilla 3</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col s12 m6 l6 xl3">
-                        <div class="card gradient-45deg-green-teal gradient-shadow min-height-100 white-text animate fadeRight">
-                            <div class="padding-4">
-                                <div class="col s7 m7">
-                                    <i class="material-icons background-round mt-5">person_add</i>
-                                    <p>ATENDIDOS</p>
-                                </div>
-                                <div class="col s5 m5 right-align">
-                                    <h3 class="mb-0 white-text">99</h3>
-                                    <p class="no-margin">Ventanilla 3</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="section" id="user-profile">
-                <div class="row">
-                    <!-- User Profile Feed -->
-                    <div class="col s12 m3 user-section-negative-margin">
-                        <div class="row">
-                            <div class="col s12 center-align">
-                                <hr />
-                                <br>
-                                <a class="waves-effect waves-light btn mt-5 cyan border-radius-4"><i class="material-icons left">airline_seat_recline_extra</i> Llamar Siguiente</a>
-                            </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col s6">
-                                <h6>Cola</h6>
-                                <h5 class="m-0"><a href="#">A12</a></h5>
-                            </div>
-                            <div class="col s6">
-                                <h6>Llamado</h6>
-                                <h5 class="m-0"><a href="#">1</a></h5>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-
-                            <div class="col s6">
-                                <a class="waves-effect waves-light red  btn-small">Ausente</a>
-                            </div>
-                            <div class="col s6">
-                                <a class="waves-effect waves-light green btn-small">Presente</a>
-                            </div>
-                            <div class="col s12">
-                                <p class="m-0"><a href="#">Volver a llamar</a></p>
-                            </div>
-                        </div>
-                        <hr>
-                        
-                    </div>
-
                 </div>
             </div>
         </div>
     </div>
-</div>
+    @section  scripts{
+        <script>
+        var vm = new Vue({
+            el: '#main',
+            data: {
+                VentanillaId: @Model.Id,
+                BloqueId:@Model.BloqueId,
+                ServicioId:@Model.ServicioId,
+                NroCola: 0,
+                NroAtendidos: 0,
+                NroAusentes: 0,
+                Cola:null
+            },
+            created: function () {
+                axios.get('@Url.Action("ObtenerNroCola", "Admision")', { params: { servicioId: this.ServicioId, ventanillaId: this.VentanillaId } })
+                    .then(r => {
+                        this.NroCola = r.data.cola;
+                        this.NroAtendidos = r.data.atendidos;
+                        this.NroAusentes = r.data.ausentes;
+                    });
 
+            },
+            methods:  {
+                Llamar: function () {
+                    axios.get('@Url.Action("LlamarCola", "Admision")', { params: { servicioId: this.ServicioId } })
+                    .then(r => {
+                        this.Cola = r.data;
+                    });
+                },
+                Atender: function (ind) {
+                    axios.post('@Url.Action("Atender", "Admision")', {
+                        colaId: this.Cola.Id,
+                        ventanillaId: this.VentanillaId,
+                        servicioId: this.ServicioId,
+                        atendido : ind
+                    })
+                        .then(r => {
+                            this.Cola = null;
+                            this.NroCola = r.data.cola;
+                            this.NroAtendidos = r.data.atendidos;
+                            this.NroAusentes = r.data.ausentes;
+                        });
+                }
+            }
+        });
+        </script>
+    }
+}
