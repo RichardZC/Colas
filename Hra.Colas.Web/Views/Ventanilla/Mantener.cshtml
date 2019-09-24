@@ -1,68 +1,99 @@
 ﻿@model Hra.Colas.Datos.Ventanilla
 
 
-    <div class="row">
-        <div class="col s12">
-            <div id="validations" class="card card-tabs">
-                <div class="card-content">
-                    <div class="card-title">
-                        <div class="row">
-                            <div class="col s8 m6 l10">
-                                <h4 class="card-title">
-                                    <a href="@Url.Action("Index","Ventanilla")"><i class="material-icons left">keyboard_backspace</i></a>
-                                    @if (Model.Id == 0)
-                                    {
-                                        <text>Nuevo Servicio</text>
-                                    }
-                                    else
-                                    {
-                                        <text>Editar Servicio</text>
-                                    }
-                                </h4>
-                            </div>
+<div class="row">
+    <div class="col s6">
+        <div id="validations" class="card card-tabs">
+            <div class="card-content">
+                <div class="card-title">
+                    <div class="row">
+                        <div class="col s8 m6 l10">
+                            <h4 class="card-title">
+                                <a href="@Url.Action("Index","Ventanilla")"><i class="material-icons left">keyboard_backspace</i></a>
+                                @if (Model.Id == 0)
+                                {
+                                    <text>Nueva Ventanilla</text>
+                                }
+                                else
+                                {
+                                    <text>Editar Ventanilla</text>
+                                }
+                            </h4>
                         </div>
                     </div>
-                    <form class="validar" id="formValidate" method="post" action="@Url.Action("Guardar","Ventanilla")">
-                        <div class="row">
-                            <input name="Id" type="hidden" value="@Model.Id">
-                            <div class="input-field col s12 m4">
-                                <label for="uname">Servicio*</label>
-                                <input name="Denominacion" type="text" required value="@Model.Denominacion" autofocus>
-                            </div>
-
-                            <div class="input-field col s12 m4">
-                                @Html.DropDownListFor(x => x.BloqueId, (IEnumerable<SelectListItem>)ViewBag.cboBloque)
-                            </div>
-
-                            @*<div class="col s12 m4">
-                                <label for="tnc_select">Estado </label>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="activo" @if (Model.Estado) { <text> checked </text> } />                                 <span>Activo</span>
-                                    </label>
-                                </p>
-                            </div>*@
-
-                            <div class="input-field col s12">
-                                <button data-ajax="true" class="btn right blue" type="submit">
-                                    Guardar
-                                    <i class="material-icons right">send</i>
-                                </button>
-                            </div>
-
-
-
-
-
-
+                </div>
+                <form class="validar" id="formValidate" method="post" action="@Url.Action("Guardar","Ventanilla")">
+                    <div class="row">
+                        <input name="Id" type="hidden" value="@Model.Id">
+                        <div class="input-field col s12 m6">
+                            <label for="uname">Ventanilla*</label>
+                            <input name="Denominacion" type="text" required value="@Model.Denominacion" autofocus>
                         </div>
 
-                    </form>
+                        <div class="input-field col s12 m6">
+                            @Html.DropDownListFor(x => x.BloqueId, (IEnumerable<SelectListItem>)ViewBag.cboBloque)
+                            <label>Bloques</label>
+                        </div>
 
-                </div>
+                        <div class="input-field col s12">
+                            @Html.DropDownListFor(x => x.UsuarioId, (IEnumerable<SelectListItem>)ViewBag.cboUsuario,"-- SIN USUARIO --" )
+                            <label>Usuarios</label>
+                        </div>
+
+
+                        <div class="col s12 m6">
+                            <label for="tnc_select"><br><br /></label>
+                            <p>
+                                <label>
+                                    <input type="checkbox" v-model="IndConsultorio" id="chkConsultorio" name="name"  />
+                                    <span>Es Consultorio ?</span>
+                                </label>
+                            </p>
+                        </div>
+                       
+                        <div v-show="IndConsultorio==true" class="input-field col s12 m6" id="pnlServicio">
+                            @Html.DropDownListFor(x => x.ServicioId, (IEnumerable<SelectListItem>)ViewBag.cboServicio,"-- SIN SERVICIO --" )
+                            <label>Servicios</label>
+                        </div>
+
+
+
+                        <div class="input-field col s12">
+                            <button data-ajax="true" class="btn right blue" type="submit">
+                                Guardar
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                </form>
+
             </div>
         </div>
-
-
     </div>
 
+
+</div>
+
+@section  scripts{
+    <script>
+       
+        var vapp = new Vue({
+            el: '#main',
+            data: {
+                IndConsultorio:false
+            },
+            created: function () {
+
+
+            }
+
+        });
+    </script>
+}
