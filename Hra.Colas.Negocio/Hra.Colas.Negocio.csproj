@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BloqueBL.cs" />
+    <Compile Include="ColaBL.cs" />
+    <Compile Include="ColaVentanillaBL.cs" />
     <Compile Include="Constante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio.cs" />

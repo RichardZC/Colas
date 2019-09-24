@@ -18,6 +18,7 @@ namespace Hra.Colas.Datos
         public System.DateTime Fecha { get; set; }
         public int ColaId { get; set; }
         public int VentanillaId { get; set; }
+        public bool IndAtendido { get; set; }
     
         public virtual Cola Cola { get; set; }
         public virtual Ventanilla Ventanilla { get; set; }

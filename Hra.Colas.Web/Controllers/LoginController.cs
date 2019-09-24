@@ -29,12 +29,12 @@ namespace Hra.Colas.Web.Controllers
                 {
                     rm.SetResponse(true);
                     rm.function = "nuevaclave(" + usuario.Id + ",'" + usuario.Correo + "');";
-
                 }
                 else
                 {
                     AddSesion(usuario.Id, ref rm);
                     Session["UsuarioId"] = usuario.Id;
+                    Session["Rol"] = usuario.Rol.Codigo;
                     Session["UsuarioRol"] = usuario.NombreCompleto + " - " + usuario.Rol.Denominacion;
                     Session["mnu"] = Constante.Menu.Listar(usuario.Rol.Codigo);
                     rm.SetResponse(true);
@@ -52,8 +52,6 @@ namespace Hra.Colas.Web.Controllers
             Comun.SessionHelper.AddUserToSession(usuarioId.ToString());
             rm.SetResponse(true);
             rm.href = Url.Action("Index", "Home");
-            //Session["menu"] = MenuBL.ListarMenuPermiso(usuarioId);
-            //rm.function = "localStorage.setItem('mnuclick', 'mnuhome'); $.ajax({url:'Login/_CargarMenu',dataType:'html',cache: false,success: function(d) {localStorage.setItem('mnu', d)} });";
         }
         public ActionResult Logout()
         {
