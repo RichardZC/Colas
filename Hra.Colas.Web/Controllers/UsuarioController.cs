@@ -13,7 +13,7 @@ namespace Hra.Colas.Web.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
-            return View(UsuarioBL.Listar());
+            return View(UsuarioBL.Listar( includeProperties:"Rol"));
         }
         public ActionResult Mantener(int id=0)
         {

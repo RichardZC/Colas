@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdmisionController.cs" />
     <Compile Include="Controllers\BloqueController.cs" />
     <Compile Include="Controllers\ComunController.cs" />
     <Compile Include="Controllers\Filter.cs" />
@@ -506,6 +507,7 @@
     <Content Include="Views\Bloque\Index.cshtml" />
     <Content Include="Views\Bloque\Mantener.cshtml" />
     <Content Include="Views\Ventanilla\Index.cshtml" />
+    <Content Include="Views\Admision\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hra.Colas.Comun\Hra.Colas.Comun.csproj">
