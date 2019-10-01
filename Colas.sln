@@ -34,6 +34,13 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Plantilla", "Plantilla\", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hra.Colas.Totem", "Hra.Colas.Totem\Hra.Colas.Totem.csproj", "{3D75D938-5369-43DF-B5A4-0F2BCDFF9013}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hra.Colas.Tv", "Hra.Colas.Tv\Hra.Colas.Tv.csproj", "{6F895450-DA71-4A16-B641-B53A30173F9C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CAD70A30-2603-4C30-87E8-CD3E63D07F6B} = {CAD70A30-2603-4C30-87E8-CD3E63D07F6B}
+		{2FCA33BE-06CC-4EA3-90C7-26A584700E65} = {2FCA33BE-06CC-4EA3-90C7-26A584700E65}
+		{DA762DDB-3F16-4B86-9B66-9912C05349FD} = {DA762DDB-3F16-4B86-9B66-9912C05349FD}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +71,10 @@ Global
 		{3D75D938-5369-43DF-B5A4-0F2BCDFF9013}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D75D938-5369-43DF-B5A4-0F2BCDFF9013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D75D938-5369-43DF-B5A4-0F2BCDFF9013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F895450-DA71-4A16-B641-B53A30173F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F895450-DA71-4A16-B641-B53A30173F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F895450-DA71-4A16-B641-B53A30173F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F895450-DA71-4A16-B641-B53A30173F9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
