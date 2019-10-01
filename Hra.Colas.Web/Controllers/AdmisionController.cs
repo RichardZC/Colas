@@ -11,6 +11,7 @@ namespace Hra.Colas.Web.Controllers
     [Autenticado]
     public class AdmisionController : Controller
     {
+
         public ActionResult Index()
         {
             var uid = Comun.SessionHelper.GetUser();

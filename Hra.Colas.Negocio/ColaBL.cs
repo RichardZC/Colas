@@ -9,6 +9,7 @@ namespace Hra.Colas.Negocio
 {
     public class ColaBL:Repositorio<Cola>
     {
+
         public static Cola LlamarCola(int servicioId) {
 
             using (var db = new COLASEntities())
