@@ -63,6 +63,16 @@ namespace Hra.Colas.Totem.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ADMISION {
+            get {
+                object obj = ResourceManager.GetObject("ADMISION", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fndtoten {
             get {
                 object obj = ResourceManager.GetObject("fndtoten", resourceCulture);

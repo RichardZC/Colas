@@ -116,7 +116,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ADMISION.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hra.Colas.Comun\Hra.Colas.Comun.csproj">
       <Project>{cad70a30-2603-4c30-87e8-cd3e63d07f6b}</Project>

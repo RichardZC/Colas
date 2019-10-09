@@ -19,6 +19,7 @@ namespace Hra.Colas.Datos
         {
             this.Servicio = new HashSet<Servicio>();
             this.Ventanilla = new HashSet<Ventanilla>();
+            this.Tv = new HashSet<Tv>();
         }
     
         public int Id { get; set; }
@@ -28,5 +29,7 @@ namespace Hra.Colas.Datos
         public virtual ICollection<Servicio> Servicio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ventanilla> Ventanilla { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tv> Tv { get; set; }
     }
 }

@@ -137,6 +137,6 @@ namespace Hra.Colas.Totem
             e.Graphics.DrawString("" + DateTime.Now.ToString(), font1, Brushes.Black, new RectangleF(85, y += 20, width, 20));
         }
 
-        
+       
     }
 }

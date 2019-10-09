@@ -80,7 +80,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "A1 - V1";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            
             // 
             // label2
             // 
@@ -90,6 +89,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(394, 72);
             this.label2.TabIndex = 1;
+            this.label2.Text = "A2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -101,6 +101,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(394, 72);
             this.label1.TabIndex = 0;
+            this.label1.Text = "A1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1

@@ -71,53 +71,58 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            
             // 
             // btn1
             // 
-            this.btn1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn1.BackColor = System.Drawing.Color.PeachPuff;
+            this.btn1.BackColor = System.Drawing.Color.White;
             this.btn1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 41F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btn1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn1.FlatAppearance.BorderColor = System.Drawing.Color.Purple;
+            this.btn1.FlatAppearance.BorderSize = 3;
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 47.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn1.ForeColor = System.Drawing.Color.Purple;
             this.btn1.Location = new System.Drawing.Point(3, 3);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(396, 220);
+            this.btn1.Size = new System.Drawing.Size(452, 257);
             this.btn1.TabIndex = 0;
-            this.btn1.Text = "opcion1";
+            this.btn1.Text = "OPCION1";
             this.btn1.UseVisualStyleBackColor = false;
             this.btn1.Click += new System.EventHandler(this.Btn1_Click);
             // 
             // btn2
             // 
-            this.btn2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn2.BackColor = System.Drawing.Color.PeachPuff;
+            this.btn2.BackColor = System.Drawing.Color.White;
             this.btn2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 41F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2.ForeColor = System.Drawing.Color.AliceBlue;
-            this.btn2.Location = new System.Drawing.Point(3, 229);
+            this.btn2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn2.FlatAppearance.BorderColor = System.Drawing.Color.Purple;
+            this.btn2.FlatAppearance.BorderSize = 3;
+            this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 47.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.ForeColor = System.Drawing.Color.Purple;
+            this.btn2.Location = new System.Drawing.Point(3, 266);
             this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(396, 221);
+            this.btn2.Size = new System.Drawing.Size(452, 258);
             this.btn2.TabIndex = 1;
-            this.btn2.Text = "opcion2";
+            this.btn2.Text = "OPCION2";
             this.btn2.UseVisualStyleBackColor = false;
             this.btn2.Click += new System.EventHandler(this.Btn2_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btn2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btn1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(70, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(70, -30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 453);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(458, 527);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // TotenAdmisionForm

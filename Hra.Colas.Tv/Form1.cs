@@ -35,22 +35,19 @@ namespace Hra.Colas.Tv
             }
             axWindowsMediaPlayer1.Ctlcontrols.play();
 
-            var bloque = int.Parse(ConfigurationManager.AppSettings["Bloque"]);
-            var codigo = ColaBL.Listar();
-            var servicios = ServicioBL.Listar(x => x.BloqueId == bloque);
-            var colaventanilla = ColaVentanillaBL.Listar();
-             
-            
-            //agregar nueva tabla ColaTriaje
-            label1.Text = codigo[0].Codigo + "-->" + servicios[1].Denominacion;
-            label2.Text = codigo[1].Codigo + "-->" + servicios[0].Denominacion;
-            label3.Text = codigo[2].Codigo + "-->" + servicios[1].Denominacion;
-            label4.Text = codigo[3].Codigo + "-->" + servicios[0].Denominacion;
-        }
+            var bloqueid = int.Parse(ConfigurationManager.AppSettings["Bloque"]);
 
+            var lista = TvBL.ListarTv(bloqueid);
+
+            label1.Text = lista[0].Denominacion;
+            label2.Text = lista[1].Denominacion;
+            label3.Text = lista[2].Denominacion;
+            label4.Text = lista[3].Denominacion;
+        }
+        //var dQuery = dbContext.CreateQuery<DateTime>("CurrentDateTime() ");
+        //DateTime dbDate = dQuery.AsEnumerable().First();
         private void Form1_Load(object sender, EventArgs e)
-        {
-            //var bloque = int.Parse(ConfigurationManager.AppSettings["Bloque"]);
+        {           
            
         }
 
