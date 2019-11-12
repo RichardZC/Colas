@@ -19,7 +19,7 @@ namespace Hra.Colas.Web.Controllers
         public ActionResult Mantener(int id = 0)
         {
             ViewBag.cboUsuario = new SelectList(UsuarioBL.Listar(null, x => x.OrderByDescending(y => y.Id)), "Id", "Denominacion");
-            ViewBag.cboUsuario = new SelectList(ServicioBL.Listar(null, x => x.OrderByDescending(y => y.Id)), "Id", "Denominacion");
+            ViewBag.cboServicio = new SelectList(ServicioBL.Listar(null, x => x.OrderByDescending(y => y.Id)), "Id", "Denominacion");
 
             ViewBag.cboBloque = new SelectList(BloqueBL.Listar(), "Id", "Denominacion");
             ViewBag.cboUsuario = new SelectList(UsuarioBL.Listar(), "Id", "NombreCompleto");
@@ -51,6 +51,7 @@ namespace Hra.Colas.Web.Controllers
                 rm.SetResponse(true);
                 rm.href = Url.Action("Index", "Ventanilla");
 
+
             }
             catch (Exception ex)
             {
@@ -61,3 +62,4 @@ namespace Hra.Colas.Web.Controllers
 
     }
 }
+

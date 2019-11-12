@@ -37,7 +37,7 @@ namespace Hra.Colas.Web.Controllers
             return Json(new { s.Codigo, s.ServicioId, s.Id }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult Atender(int colaId, int ventanillaId, int servicioId, bool atendido)
+        public ActionResult Atender(int colaId, int ventanillaId, int servicioId, int bloqueId, bool atendido)
         {
             ColaVentanillaBL.Crear(new ColaVentanilla {
                 Fecha = DateTime.Now,
@@ -45,6 +45,16 @@ namespace Hra.Colas.Web.Controllers
                 VentanillaId = ventanillaId,
                 IndAtendido = atendido
             });
+
+            var v = VentanillaBL.Obtener(ventanillaId);
+            var c = ColaBL.Obtener(colaId);
+
+            TvBL.Crear(new Tv {
+                BloqueId= bloqueId,
+                Denominacion = c.Codigo + " -- " + v.Denominacion,
+                Fecha = DateTime.Now
+            });
+
             ColaBL.ActualizarParcial(new Cola { Id = colaId, IndAtendido = true }, x => x.IndAtendido);
             //return Json(true, JsonRequestBehavior.AllowGet);
             return ObtenerNroCola(servicioId, ventanillaId);

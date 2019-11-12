@@ -49,6 +49,15 @@
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="BloqueId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Tv">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BloqueId" Type="int" Nullable="false" />
+          <Property Name="Denominacion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="Id" />
@@ -120,6 +129,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Tv__BloqueId__49C3F6B7">
+          <End Role="Bloque" Type="Self.Bloque" Multiplicity="1" />
+          <End Role="Tv" Type="Self.Tv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloque">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tv">
+              <PropertyRef Name="BloqueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Ventanill__Bloqu__25869641">
           <End Role="Bloque" Type="Self.Bloque" Multiplicity="1" />
           <End Role="Ventanilla" Type="Self.Ventanilla" Multiplicity="*" />
@@ -174,6 +195,7 @@
           <EntitySet Name="ColaVentanilla" EntityType="Self.ColaVentanilla" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tv" EntityType="Self.Tv" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventanilla" EntityType="Self.Ventanilla" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Cola__ServicioId__20C1E124" Association="Self.FK__Cola__ServicioId__20C1E124">
@@ -191,6 +213,10 @@
           <AssociationSet Name="FK__Servicio__Bloque__239E4DCF" Association="Self.FK__Servicio__Bloque__239E4DCF">
             <End Role="Bloque" EntitySet="Bloque" />
             <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tv__BloqueId__49C3F6B7" Association="Self.FK__Tv__BloqueId__49C3F6B7">
+            <End Role="Bloque" EntitySet="Bloque" />
+            <End Role="Tv" EntitySet="Tv" />
           </AssociationSet>
           <AssociationSet Name="FK__Ventanill__Bloqu__25869641" Association="Self.FK__Ventanill__Bloqu__25869641">
             <End Role="Bloque" EntitySet="Bloque" />
@@ -253,6 +279,11 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Ventanilla" EntitySet="Ventanilla" />
           </AssociationSet>
+          <EntitySet Name="Tv" EntityType="COLASModel.Tv" />
+          <AssociationSet Name="FK__Tv__BloqueId__49C3F6B7" Association="COLASModel.FK__Tv__BloqueId__49C3F6B7">
+            <End Role="Bloque" EntitySet="Bloque" />
+            <End Role="Tv" EntitySet="Tv" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Bloque">
           <Key>
@@ -262,6 +293,7 @@
           <Property Name="Denominacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Servicio" Relationship="COLASModel.FK__Servicio__Bloque__239E4DCF" FromRole="Bloque" ToRole="Servicio" />
           <NavigationProperty Name="Ventanilla" Relationship="COLASModel.FK__Ventanill__Bloqu__25869641" FromRole="Bloque" ToRole="Ventanilla" />
+          <NavigationProperty Name="Tv" Relationship="COLASModel.FK__Tv__BloqueId__49C3F6B7" FromRole="Bloque" ToRole="Tv" />
         </EntityType>
         <EntityType Name="Cola">
           <Key>
@@ -433,6 +465,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tv">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BloqueId" Type="Int32" Nullable="false" />
+          <Property Name="Denominacion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Bloque" Relationship="COLASModel.FK__Tv__BloqueId__49C3F6B7" FromRole="Tv" ToRole="Bloque" />
+        </EntityType>
+        <Association Name="FK__Tv__BloqueId__49C3F6B7">
+          <End Type="COLASModel.Bloque" Role="Bloque" Multiplicity="1" />
+          <End Type="COLASModel.Tv" Role="Tv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloque">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tv">
+              <PropertyRef Name="BloqueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -509,6 +563,16 @@
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
                 <ScalarProperty Name="BloqueId" ColumnName="BloqueId" />
                 <ScalarProperty Name="Denominacion" ColumnName="Denominacion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tv">
+            <EntityTypeMapping TypeName="COLASModel.Tv">
+              <MappingFragment StoreEntitySet="Tv">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Denominacion" ColumnName="Denominacion" />
+                <ScalarProperty Name="BloqueId" ColumnName="BloqueId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
