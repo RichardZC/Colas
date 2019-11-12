@@ -127,14 +127,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdmisionController.cs" />
-    <Compile Include="Controllers\BloqueController.cs" />
-    <Compile Include="Controllers\ComunController.cs" />
-    <Compile Include="Controllers\Filter.cs" />
+    <Compile Include="Controllers\Administracion\BloqueController.cs" />
+    <Compile Include="Controllers\Comun\ComunController.cs" />
+    <Compile Include="Controllers\Comun\Filter.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LlamadoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ServicioController.cs" />
-    <Compile Include="Controllers\UsuarioController.cs" />
-    <Compile Include="Controllers\VentanillaController.cs" />
+    <Compile Include="Controllers\Administracion\ServicioController.cs" />
+    <Compile Include="Controllers\Administracion\UsuarioController.cs" />
+    <Compile Include="Controllers\Administracion\VentanillaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -509,6 +510,7 @@
     <Content Include="Views\Ventanilla\Index.cshtml" />
     <Content Include="Views\Admision\Index.cshtml" />
     <Content Include="Views\Ventanilla\Mantener.cshtml" />
+    <Content Include="Views\Llamado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hra.Colas.Comun\Hra.Colas.Comun.csproj">
