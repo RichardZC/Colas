@@ -32,13 +32,13 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>
+                                        <td style="padding:0">
                                             <a href="@Url.Action("Mantener","Servicio",new { id = item.Id })"><i class="material-icons">edit</i></a>
                                         </td>
-                                        <td>@item.Denominacion</td>
+                                        <td style="padding:0">@item.Denominacion</td>
                                         
-                                        <td>@item.Bloque.Denominacion</td>
-                                        <td>
+                                        <td style="padding:0">@item.Bloque.Denominacion</td>
+                                        <td style="padding:0">
                                             @if (item.Estado)
                                             {
                                                 <a href="#"><i class="material-icons">check_circle</i></a>

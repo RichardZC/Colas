@@ -46,7 +46,7 @@ namespace Hra.Colas.Web.Controllers
                 }
                 else
                 {
-                    VentanillaBL.ActualizarParcial(ventanilla, x => x.Denominacion, x => x.BloqueId, x => x.UsuarioId, x => x.ServicioId);
+                    VentanillaBL.ActualizarParcial(ventanilla, x => x.Denominacion, x => x.UsuarioId, x => x.ServicioId);
                 }
                 rm.SetResponse(true);
                 rm.href = Url.Action("Index", "Ventanilla");

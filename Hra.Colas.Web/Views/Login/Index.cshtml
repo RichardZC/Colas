@@ -76,7 +76,7 @@
     <script>
         async function nuevaclave(id, user) {
             Swal.fire({
-                title: 'Cambio de Clave ' + user ,
+                title: 'Cambio de Clave ' + user,
                 input: 'text',
                 inputAttributes: {
                     autocapitalize: 'off'
@@ -102,28 +102,7 @@
                 if (result.value) {
                     window.location.href = "/";
                 }
-            });
-
-            @*const { value: cambio } = await Swal.fire({
-                title: 'Cambio de Clave',
-                input: 'text',
-                inputValue: '',
-                //allowEscapeKey: false,
-                allowOutsideClick: false,
-                confirmButtonText: 'Cambiare mi clave',
-                //showCancelButton: true,
-                inputValidator: (value) => {
-                    if (!value) {
-                        return 'El Campo es Requerido!'
-                    }
-                }
-            })
-            if (cambio) {
-                $.post('@Url.Action("CambiarClave", "Login")', { id: id, usuario: user, clave: cambio })
-                    .done(function (data) {
-                        window.location.href = '@Url.Action("Index","Home")';
-                    });
-            }*@
+            });            
         }
     </script>
 </body>

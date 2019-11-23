@@ -22,11 +22,9 @@ namespace Hra.Colas.Datos
     
         public int Id { get; set; }
         public string Denominacion { get; set; }
-        public int BloqueId { get; set; }
         public Nullable<int> UsuarioId { get; set; }
-        public Nullable<int> ServicioId { get; set; }
+        public int ServicioId { get; set; }
     
-        public virtual Bloque Bloque { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ColaVentanilla> ColaVentanilla { get; set; }
         public virtual Servicio Servicio { get; set; }

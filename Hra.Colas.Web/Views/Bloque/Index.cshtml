@@ -32,10 +32,10 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>
+                                        <td style="padding:0">
                                             <a href="@Url.Action("Mantener","Bloque",new { id = item.Id })"><i class="material-icons">edit</i></a>
                                         </td>
-                                        <td>@item.Denominacion</td>
+                                        <td style="padding:0">@item.Denominacion</td>
 
 
                                         

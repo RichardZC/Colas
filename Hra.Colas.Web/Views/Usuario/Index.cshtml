@@ -34,14 +34,14 @@
                                 @foreach (var item in Model)
                                 {
                                 <tr>
-                                    <td>
+                                    <td style="padding:0">
                                         <a href="@Url.Action("Mantener","Usuario",new { id = item.Id })"><i class="material-icons">edit</i></a>
                                     </td>
-                                    <td>@item.NombreCompleto</td>
-                                    <td>@item.Correo  </td>
-                                    <td>@item.Celular</td>
-                                    <td>@item.Rol.Denominacion</td>
-                                    <td>
+                                    <td style="padding:0">@item.NombreCompleto</td>
+                                    <td style="padding:0">@item.Correo  </td>
+                                    <td style="padding:0">@item.Celular</td>
+                                    <td style="padding:0">@item.Rol.Denominacion</td>
+                                    <td style="padding:0">
                                         @if (item.Activo)
                                         {
                                             <a href="#"><i class="material-icons">check_circle</i></a>
