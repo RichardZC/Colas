@@ -11,7 +11,7 @@ else
     <div class="row">
         <div class="col s12">
             <div class="container">
-                <h4>@Model.Denominacion - @Model.Bloque.Denominacion</h4>
+                <h4>@Model.Denominacion</h4>
                 <hr />
                 <div id="card-stats">
                     <div class="row">
@@ -104,7 +104,7 @@ else
             el: '#main',
             data: {
                 VentanillaId: @Model.Id,
-                BloqueId:@Model.BloqueId,
+                BloqueId:@Model.Servicio.BloqueId,
                 ServicioId:@Model.ServicioId,
                 NroCola: 0,
                 NroAtendidos: 0,

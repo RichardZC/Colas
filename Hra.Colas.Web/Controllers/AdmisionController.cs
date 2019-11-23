@@ -15,7 +15,7 @@ namespace Hra.Colas.Web.Controllers
         public ActionResult Index()
         {
             var uid = Comun.SessionHelper.GetUser();
-            return View(VentanillaBL.Obtener(x => x.UsuarioId == uid, includeProperties: "Bloque"));
+            return View(VentanillaBL.Obtener(x => x.UsuarioId == uid, includeProperties: "Servicio"));
         }
         public ActionResult ObtenerNroCola(int servicioId, int ventanillaId)
         {
