@@ -151,6 +151,7 @@
     <Compile Include="Controllers\Administracion\ServicioController.cs" />
     <Compile Include="Controllers\Administracion\UsuarioController.cs" />
     <Compile Include="Controllers\Administracion\VentanillaController.cs" />
+    <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -558,6 +559,7 @@
       <DependentUpon>dsUsuario.xsd</DependentUpon>
     </Content>
     <Content Include="Views\Reporte\Index.cshtml" />
+    <Content Include="Views\Prueba\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hra.Colas.Comun\Hra.Colas.Comun.csproj">
